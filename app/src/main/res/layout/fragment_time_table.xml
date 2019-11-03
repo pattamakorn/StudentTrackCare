@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ACAAAA"
+    android:background="#FFFFFF"
     tools:context=".TimeTable">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -80,32 +80,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="275dp"
-            android:layout_marginLeft="275dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginRight="22dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="263dp"
+            android:layout_marginLeft="263dp"
+            android:layout_marginTop="23.5dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginBottom="23.5dp"
             android:text="ภาคเรียนที่ 1/2562"
             android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/classroom"
-            android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:layout_below="@+id/term"
-            android:layout_alignEnd="@+id/term"
-            android:layout_alignRight="@+id/term"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="259dp"
-            android:layout_marginLeft="259dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="-9dp"
-            android:layout_marginRight="-9dp"
-            android:layout_marginBottom="16dp"
-            android:text="ชั้นมัธยมศึกษาปีที่ 6/1"
-            android:textColor="#fff" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -113,14 +97,12 @@
         android:layout_height="502dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="199dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:layout_marginBottom="150dp"
             android:layout_width="match_parent"
             android:id="@+id/recyclertime"
