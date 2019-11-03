@@ -3,6 +3,7 @@ package com.example.studentattendent;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -51,9 +52,9 @@ import java.util.Random;
 public class genQr extends Fragment {
     View v;
     private ImageView qrc;
-    private TextView skeyword,save;
+    private TextView skeyword,save,namesub;
     private Button gen;
-    private String  URL_INQRCODE= "http://203.154.83.137/StudentAttendent/qrcode/gen.php",tt,sqr;
+    private String  URL_INQRCODE= "http://203.154.83.137/StudentAttendent/qrcode/gen.php",tt,sqr,idsub;
     BitmapDrawable bitmapDrawable;
     Bitmap bitmap;
 
@@ -72,6 +73,8 @@ public class genQr extends Fragment {
         skeyword = v.findViewById(R.id.showkey);
         gen = v.findViewById(R.id.genqr);
         save = v.findViewById(R.id.saveQR);
+        namesub = v.findViewById(R.id.namesub);
+        loadprofileteacher();
         Drawable drawable = getResources().getDrawable(R.drawable.qrcode);
         bitmap = ((BitmapDrawable) drawable).getBitmap();
 
@@ -156,10 +159,50 @@ public class genQr extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("keyword",sqr);
+                params.put("idsub",idsub);
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
     }
+
+    public void loadprofileteacher(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                "http://203.154.83.137/StudentAttendent/loaduserteacher.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject posts = array.getJSONObject(i);
+                        String subjectname = posts.getString("namesubject");
+                        idsub = posts.getString("idsubject");
+                        namesub.setText("วิชา "+idsub+" "+subjectname);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+                String mid = sp.getString("IdKey","No ID");
+                params.put("user",mid);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
 }

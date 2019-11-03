@@ -90,6 +90,7 @@ public class detailstudent extends AppCompatDialogFragment {
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject posts = array.getJSONObject(i);
+                        String idstu = posts.getString("idstudent");
                         String fsname = posts.getString("fnamest");
                         String classS = posts.getString("class");
                         String fpname = posts.getString("fnamePr");
@@ -101,7 +102,7 @@ public class detailstudent extends AppCompatDialogFragment {
                         String ttel = posts.getString("ttel");
                         String Tpic = posts.getString("imgst");
 
-                        detailST.setText("● ชื่อ-นามสกุล: \n"+"    " +fsname);
+                        detailST.setText("● รหัสนักเรียน: \n    "+idstu+"\n\n● ชื่อ-นามสกุล: \n"+"    " +fsname);
                         dtels.setText("● เบอร์โทรศัพท์: \n"+"    " +tsname);
                         classd.setText("● ชั้นมัธยมศึกษาปีที่ "+classS);
                         parentd.setText("● ผู้ปกครอง: \n"+"    " +fpname+" " +lpname+"\n\n" +

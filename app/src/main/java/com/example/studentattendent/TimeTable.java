@@ -51,7 +51,7 @@ import java.util.Map;
  */
 public class TimeTable extends Fragment {
     private TextView daynow,datenow;
-    String myear,mday,dday = "Tuesday",year="2562",terms = "1";
+    String myear,mday,dday,year="2562",terms = "1";
     String myuser,myname;
 
     View v;
@@ -79,11 +79,10 @@ public class TimeTable extends Fragment {
         recyclerView.setAdapter(TimetableAdapter);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        //SimpleDateFormat simpleDayFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDayFormat = new SimpleDateFormat("EEEE");
         String ct = simpleDateFormat.format(new Date());
-
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        String dayn = simpleDayFormat.format(new Date());
+        dday = dayn;
 
 
         datenow.setText(ct);

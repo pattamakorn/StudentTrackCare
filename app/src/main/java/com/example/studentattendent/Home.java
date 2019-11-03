@@ -188,45 +188,7 @@ public class Home extends Fragment implements detailstudent.detailListener{
 
     @Override
     public void applyTexts(String textPost) {
-        //onResume();
-
-//        getFragmentManager().beginTransaction().add(R.id.frameLayout,new Home()).commit();
 
 
     }
-
-//    public void insertpost(){
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-//                URL_Profile, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d("ResponseStudent",response.toString());
-//                try {
-//                    JSONArray array = new JSONArray(response);
-//                    for (int i = 0; i < array.length(); i++) {
-//                        JSONObject posts = array.getJSONObject(i);
-//                        String TFddname = posts.getString("fullname");
-//                        Toast.makeText(getActivity(), ""+TFddname, Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        },new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("abc",error.toString());
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<>();
-//                params.put("user",mid);
-//                return params;
-//            }
-//        };
-//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//        requestQueue.add(stringRequest);
-//    }
-
 }
