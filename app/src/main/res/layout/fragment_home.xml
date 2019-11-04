@@ -6,9 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#b9ada0"
     tools:context=".Home">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,14 +14,14 @@
         app:cardElevation="5dp">
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="170dp"
+            android:layout_height="190dp"
             android:layout_margin="4dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp">
             <RelativeLayout
                 android:id="@+id/profile"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/bgpro">
 
                 <ImageView
@@ -72,7 +69,7 @@
             android:layout_height="502dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="180dp"
             >
 
             <androidx.recyclerview.widget.RecyclerView
@@ -87,5 +84,4 @@
 
 
     </androidx.cardview.widget.CardView>
-    </RelativeLayout>
 </FrameLayout>

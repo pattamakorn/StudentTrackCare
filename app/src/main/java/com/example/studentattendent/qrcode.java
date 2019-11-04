@@ -1,6 +1,8 @@
 package com.example.studentattendent;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.zxing.Result;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -23,6 +39,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class qrcode extends Fragment {
     private ZXingScannerView zXingScannerView;
+    public String scaned;
 
 
     public qrcode() {
@@ -49,12 +66,56 @@ public class qrcode extends Fragment {
                 //zXingScannerView.stopCamera();
                 getActivity().setContentView(R.layout.activity_main);
                 String resultString = result.getText().toString();
+                scaned = resultString;
+                scanqrcode();
                 Toast.makeText(getActivity(), "QR Code = "+resultString, Toast.LENGTH_SHORT).show();
                 Log.d("12MarchV1","QR Code = "+resultString);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, new checkname()).commit();
+                        .replace(R.id.frameLayout, new Home()).commit();
             }
         });
+    }
+
+    public void scanqrcode(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                "http://203.154.83.137/StudentAttendent/scaned.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("ResponseStudent",response.toString());
+                try {
+                    JSONArray array = new JSONArray(response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject posts = array.getJSONObject(i);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    //Toast.makeText(getActivity(),e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("abc",error.toString());
+                        // Toast.makeText(getActivity(),error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+                String mid = sp.getString("IdKey","No ID");
+                params.put("id",mid);
+                params.put("keyword",scaned);
+                return params;
+            }
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
     }
 
 }

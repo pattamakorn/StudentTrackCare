@@ -35,10 +35,8 @@ public class teachAdapter extends RecyclerView.Adapter<teachAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.isub.setText(mteach.get(position).getIdsub());
-        holder.nub.setText(mteach.get(position).getNamesub());
-        holder.csub.setText(mteach.get(position).getClasst());
-        holder.rsub.setText(mteach.get(position).getClassR());
-        holder.tsub.setText(mteach.get(position).getTimeT());
+        holder.room.setText(mteach.get(position).getClassR());
+        holder.timeteach.setText(mteach.get(position).getTimeT());
 
 
 
@@ -50,15 +48,14 @@ public class teachAdapter extends RecyclerView.Adapter<teachAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView isub,nub,tsub,csub,rsub;
+        private TextView isub,room,timeteach;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             isub = itemView.findViewById(R.id.id_subject);
-            nub = itemView.findViewById(R.id.name_subject);
-            tsub = itemView.findViewById(R.id.timetablesubject);
-            csub = itemView.findViewById(R.id.teacher_subject);
-            rsub = itemView.findViewById(R.id.textView2);
+            room = itemView.findViewById(R.id.textView2);
+            timeteach = itemView.findViewById(R.id.timetablesubject);
+
         }
     }
 }

@@ -3,13 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     tools:context=".timeteacher">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aa"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/bgpro">
+
+                <TextView
+                    android:id="@+id/daytt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="277dp"
+                    android:layout_marginLeft="277dp"
+                    android:layout_marginTop="15dp"
+                    android:text="สวัสดีวันจันทร์"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/datett"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/daytt"
+                    android:layout_alignStart="@+id/daytt"
+                    android:layout_alignLeft="@+id/daytt"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="4/11/2562"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bb"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_below="@+id/aa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/bgpro">
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cc"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_below="@+id/bb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="502dp"
+                android:background="@drawable/bgpro">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/recyclerteachertime"
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </FrameLayout>
