@@ -45,10 +45,6 @@ public class newsAdapter extends RecyclerView.Adapter<newsAdapter.MyViewHolder> 
         holder.showtopic.setText(mnews.get(position).getTopic());
         holder.textpost.setText(mnews.get(position).getMassagepost());
         holder.postdata.setText(mnews.get(position).getDatepost());
-        // holder.url_ima.setImageURI();
-
-        // holder.url_ima.setText(mfoothit.get(position).getIma());
-        // Picasso.get().load("http://i.imgur.com/DvpvklR.png").into();
         Glide.with(view.getContext()).load(mnews.get(position).getIma()).into(holder.url_ima);
 
     }

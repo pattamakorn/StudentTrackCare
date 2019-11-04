@@ -3,13 +3,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     tools:context=".checkname">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aa"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/bgpro">
+
+                <TextView
+                    android:id="@+id/mysub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="วิชาคอมพิวเตอร์"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bb"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_below="@+id/aa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="#BB7C2A">
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/showqrnowday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:text="Checkname Teacher" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cc"
+            android:layout_margin="1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="30dp"
+            android:layout_below="@+id/bb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="502dp"
+                android:background="@drawable/bgpro">
+
+                <TextView
+                    android:id="@+id/classroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:text="ห้องเรียน"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+
+                <Spinner
+                    android:id="@+id/selectclass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/classroom"
+                    android:layout_alignBottom="@+id/classroom"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/classroom"
+                    android:layout_toRightOf="@+id/classroom" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclertcheckscan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/selectclass"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginBottom="100dp"></androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </FrameLayout>

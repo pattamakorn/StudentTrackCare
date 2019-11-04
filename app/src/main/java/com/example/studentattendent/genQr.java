@@ -158,8 +158,11 @@ public class genQr extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
+                SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+                String mid = sp.getString("IdKey","No ID");
                 params.put("keyword",sqr);
                 params.put("idsub",idsub);
+                params.put("myid",mid);
                 return params;
             }
         };

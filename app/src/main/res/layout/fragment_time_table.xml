@@ -71,6 +71,24 @@
         android:background="@drawable/tabsecond"
         android:layout_alignParentLeft="true">
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="31dp"
+            android:layout_height="18dp"
+            android:layout_alignBottom="@+id/term"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="94dp"
+            android:layout_marginRight="94dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/term"
+            android:layout_toRightOf="@+id/term"
+            android:background="@android:color/transparent" />
+
         <TextView
             android:id="@+id/term"
             android:layout_width="wrap_content"
@@ -78,16 +96,12 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="263dp"
-            android:layout_marginLeft="263dp"
-            android:layout_marginTop="23.5dp"
-            android:layout_marginEnd="33dp"
-            android:layout_marginRight="33dp"
-            android:layout_marginBottom="23.5dp"
-            android:text="ภาคเรียนที่ 1/2562"
+            android:layout_marginStart="218dp"
+            android:layout_marginLeft="218dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="ภาคเรียนที่ "
             android:textColor="#fff" />
 
     </RelativeLayout>

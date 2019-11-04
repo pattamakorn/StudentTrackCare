@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,13 +45,18 @@ import java.util.Map;
  */
 public class timeteacher extends Fragment {
     private  String URL_TIMETeach = "http://203.154.83.137/StudentAttendent/loadteachtime.php";
-    private TextView nowday,nowdate;
+    private TextView nowday,nowdate,showy;
     public String today,toyear,toterm;
+    private Spinner spinnert;
+    public teachAdapter TeachAdapter;
     View view;
 
 
     private RecyclerView recyclerView;
     private List<teach> listteachtimetable;
+
+    List<String> listspinners  = new ArrayList<>();
+    ArrayAdapter<String> spinnerAdapters;
 
     public timeteacher() {
         // Required empty public constructor
@@ -62,18 +70,46 @@ public class timeteacher extends Fragment {
         view = inflater.inflate(R.layout.fragment_timeteacher, container, false);
         nowdate = view.findViewById(R.id.datett);
         nowday = view.findViewById(R.id.daytt);
+        spinnert = view.findViewById(R.id.selectterm);
+        showy = view.findViewById(R.id.showyear);
         recyclerView = view.findViewById(R.id.recyclerteachertime);
-        teachAdapter TeachAdapter = new teachAdapter(getContext(),listteachtimetable);
+        TeachAdapter = new teachAdapter(getContext(),listteachtimetable);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(TeachAdapter);
+
+        spinnerAdapters = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, android.R.id.text1);
+        spinnerAdapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnert.setAdapter(spinnerAdapters);
+        listspinners.add("1");
+        listspinners.add("2");
+        spinnerAdapters.addAll(listspinners);
+        spinnerAdapters.notifyDataSetChanged();
+
+        spinnert.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                toterm = listspinners.get(i);
+                listteachtimetable.clear();
+                TeachAdapter.notifyDataSetChanged();
+                loadtime();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat simpleDayFormat = new SimpleDateFormat("EEEE");
         String ct = simpleDateFormat.format(new Date());
         String dayn = simpleDayFormat.format(new Date());
         today = dayn;
-        toterm = "1";
-        toyear = "2562";
+        //toterm = "1";
+        toyear = showy.getText().toString();
 
         nowday.setText("Hello, "+dayn);
         nowdate.setText(ct);
@@ -88,7 +124,7 @@ public class timeteacher extends Fragment {
         super.onCreate(savedInstanceState);
         listteachtimetable = new ArrayList<>();
 
-        loadtime();
+        //loadtime();
     }
 
     public void loadtime(){
@@ -110,7 +146,7 @@ public class timeteacher extends Fragment {
                                 "ห้องเรียน "+mclassroom,
                                 "เวลา "+mtime)
                         );
-                        teachAdapter TeachAdapter = new teachAdapter(getContext(),listteachtimetable);
+                        TeachAdapter = new teachAdapter(getContext(),listteachtimetable);
                         recyclerView.setAdapter(TeachAdapter);
 
 

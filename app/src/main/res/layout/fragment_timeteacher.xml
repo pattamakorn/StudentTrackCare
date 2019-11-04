@@ -29,12 +29,12 @@
                     android:id="@+id/daytt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="277dp"
-                    android:layout_marginLeft="277dp"
+                    android:layout_marginStart="88dp"
+                    android:layout_marginLeft="88dp"
                     android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/textView"
+                    android:layout_toRightOf="@+id/textView"
                     android:text="สวัสดีวันจันทร์"
                     android:textColor="#fff"
                     android:textSize="15sp" />
@@ -55,6 +55,22 @@
                     android:textColor="#fff"
                     android:textSize="15sp" />
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="ตารางสอนประจำวัน"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
@@ -69,8 +85,79 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:background="@drawable/bgpro">
+                android:background="#BB7C2A">
 
+                <ImageView
+                    android:layout_width="159dp"
+                    android:layout_height="73dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/showyear"
+                    android:layout_toRightOf="@+id/showyear"
+                    android:src="@drawable/teachertime" />
+
+                <TextView
+                    android:id="@+id/textterm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:text="ภาคเรียนที่" />
+
+                <Spinner
+                    android:id="@+id/selectterm"
+                    android:layout_width="31dp"
+                    android:layout_height="18dp"
+                    android:layout_alignBottom="@+id/textterm"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/textterm"
+                    android:layout_toRightOf="@+id/textterm"
+                    android:background="@android:color/transparent"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textterm"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_toEndOf="@+id/selectterm"
+                    android:layout_toRightOf="@+id/selectterm"
+                    android:text="ปีการศึกษา"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/showyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textyear"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/textyear"
+                    android:layout_toRightOf="@+id/textyear"
+                    android:text="2562"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 

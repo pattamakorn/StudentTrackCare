@@ -18,6 +18,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,8 +54,13 @@ import java.util.Map;
  */
 public class TimeTable extends Fragment {
     private TextView daynow,datenow;
-    String myear,mday,dday,year="2562",terms = "1";
+    private Spinner spinner;
+    String myear,mday,dday,year="2562",terms;
     String myuser,myname;
+    public timetableAdapter TimetableAdapter;
+
+    List<String> listspinner  = new ArrayList<>();
+    ArrayAdapter<String> spinnerAdapter;
 
     View v;
 
@@ -72,9 +80,10 @@ public class TimeTable extends Fragment {
         v = inflater.inflate(R.layout.fragment_time_table, container, false);
 
         recyclerView = v.findViewById(R.id.recyclertime);
+        spinner = v.findViewById(R.id.spinner);
         daynow = v.findViewById(R.id.daynow);
         datenow = v.findViewById(R.id.datenow);
-        timetableAdapter TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
+        TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(TimetableAdapter);
 
@@ -84,6 +93,30 @@ public class TimeTable extends Fragment {
         String dayn = simpleDayFormat.format(new Date());
         dday = dayn;
 
+        spinnerAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, android.R.id.text1);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+        listspinner.add("1");
+        listspinner.add("2");
+        spinnerAdapter.addAll(listspinner);
+        spinnerAdapter.notifyDataSetChanged();
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                terms = listspinner.get(i);
+                listtimetable.clear();
+                TimetableAdapter.notifyDataSetChanged();
+                loadtime();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         datenow.setText(ct);
         daynow.setText(dday);
@@ -96,8 +129,6 @@ public class TimeTable extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listtimetable = new ArrayList<>();
-
-        loadtime();
     }
 
     @Override
@@ -132,7 +163,7 @@ public class TimeTable extends Fragment {
                                 "ห้องเรียน "+classroom,
                                 time)
                         );
-                        timetableAdapter TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
+                        TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
                         recyclerView.setAdapter(TimetableAdapter);
 
                     }

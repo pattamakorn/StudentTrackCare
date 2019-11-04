@@ -1,7 +1,10 @@
 package com.example.studentattendent;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -68,10 +71,28 @@ public class qrcode extends Fragment {
                 String resultString = result.getText().toString();
                 scaned = resultString;
                 scanqrcode();
-                Toast.makeText(getActivity(), "QR Code = "+resultString, Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("เช็คชื่อสำเร็จ!!");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton(" ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 Log.d("12MarchV1","QR Code = "+resultString);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, new Home()).commit();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, new Home()).commit();
             }
         });
     }
