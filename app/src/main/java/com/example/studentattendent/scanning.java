@@ -1,25 +1,19 @@
 package com.example.studentattendent;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
+public class scanning extends AppCompatActivity {
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-public class MainActivity extends AppCompatActivity {
-//    private TextView mTextMessage;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -49,15 +43,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scanning);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
 //        mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new Home()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new scanning_fragment()).commit();
 
         SharedPreferences sp = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
         String showidpre = sp.getString("IdKey","No ID");
         String showfullpre = sp.getString("fullnameKey","No ID");
+
     }
 
     @Override
@@ -71,18 +67,19 @@ public class MainActivity extends AppCompatActivity {
         int id = itemtop.getItemId();
         switch (id) {
             case R.id.qrcode_menu:
-                getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new qrcode()).commit();
-                //startActivity(new Intent(MainActivity.this,scanning.class));
+//                getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new qrcode()).commit();
+                startActivity(new Intent(scanning.this,scanning.class));
                 return true;
             case R.id.logout_menu:
                 SharedPreferences sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.clear();
                 editor.commit();
-                startActivity(new Intent(MainActivity.this,login.class));
+                startActivity(new Intent(scanning.this,login.class));
             default:
                 return super.onOptionsItemSelected(itemtop);
         }
     }
+
 
 }

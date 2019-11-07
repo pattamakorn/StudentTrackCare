@@ -16,10 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -43,15 +39,13 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class qrcode extends Fragment {
-    View view;
-    public String inputkey;
-    public EditText inkey;
-    public ImageView goscan;
-    public Button check;
+public class scanning_fragment extends Fragment {
+
+    private ZXingScannerView zXingScannerView;
+    public String scaned;
 
 
-    public qrcode() {
+    public scanning_fragment() {
         // Required empty public constructor
     }
 
@@ -60,24 +54,25 @@ public class qrcode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_qrcode, container, false);
-        inkey = view.findViewById(R.id.inputkeyword);
-        goscan = view.findViewById(R.id.gotoscan);
-        check = view.findViewById(R.id.checknameonqr);
+        return inflater.inflate(R.layout.fragment_scanning_fragment, container, false);
+    }
 
-        goscan.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        zXingScannerView = new ZXingScannerView(getActivity());
+        getActivity().setContentView(zXingScannerView);
+        zXingScannerView.startCamera();
+        zXingScannerView.setResultHandler(new ZXingScannerView.ResultHandler() {
             @Override
-            public void onClick(View view) {
-//                getChildFragmentManager().beginTransaction().add(R.id.frameLayout,new Home()).commit();
-                startActivity(new Intent(getActivity(),scanning.class));
-            }
-        });
+            public void handleResult(Result result) {
+                //zXingScannerView.stopCamera();
+                getActivity().setContentView(R.layout.activity_main);
+                String resultString = result.getText().toString();
+                scaned = resultString;
+                scanqrcode();
 
-
-        check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                scankeywordcode();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("เช็คชื่อสำเร็จ!!");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -95,13 +90,17 @@ public class qrcode extends Fragment {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+
+                Log.d("12MarchV1","QR Code = "+resultString);
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, new Home()).commit();
             }
         });
 
-        return view;
     }
 
-    public void scankeywordcode(){
+
+    public void scanqrcode(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 "http://203.154.83.137/StudentAttendent/scaned.php", new Response.Listener<String>() {
             @Override
@@ -134,7 +133,7 @@ public class qrcode extends Fragment {
                 SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
                 String mid = sp.getString("IdKey","No ID");
                 params.put("id",mid);
-                params.put("keyword",inkey.getText().toString());
+                params.put("keyword",scaned);
                 return params;
             }
 
@@ -142,5 +141,6 @@ public class qrcode extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
     }
+
 
 }
