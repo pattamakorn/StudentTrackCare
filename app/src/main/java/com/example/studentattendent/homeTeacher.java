@@ -162,7 +162,6 @@ public class homeTeacher extends Fragment implements teachposttext.teachposttext
                         String lnameT = posts.getString("lnameteacher");
                         Glide.with(v.getContext()).load(imgP).into(imgprofileT);
                         Tname.setText(fnameT+" "+lnameT);
-                        //Toast.makeText(v.getContext(), fnameS, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
