@@ -76,7 +76,7 @@
                             android:layout_toEndOf="@+id/follow_date"
                             android:layout_toRightOf="@+id/follow_date"
                             android:fontFamily="@font/mitr_semibold"
-                            android:text="เข้าเรียน 100 %"
+                            android:text="เข้าเรียน"
                             android:textSize="15dp" />
 
                     </RelativeLayout>

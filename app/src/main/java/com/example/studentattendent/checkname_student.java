@@ -44,13 +44,16 @@ import java.util.Map;
 public class checkname_student extends Fragment {
 
     View view;
+    private int agh;
+
+    TimeTable timeTable;
 
     private TextView sdate,inc;
 
     public studentcheckAdapter StudentcheckAdapter;
     private RecyclerView recyclerViewcs;
     private List<studentcheck> listcheckst;
-    public String numsub,numcheck;
+    public String numsub,numcheck,counttime;
     public int percen,aa,bb;
 
 
@@ -75,7 +78,6 @@ public class checkname_student extends Fragment {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String ct = simpleDateFormat.format(new Date());
         sdate.setText(ct);
-
 
 
 
@@ -115,9 +117,51 @@ public class checkname_student extends Fragment {
                         ));
                         StudentcheckAdapter = new studentcheckAdapter(getContext(),listcheckst);
                         recyclerViewcs.setAdapter(StudentcheckAdapter);
+                        loadcounttime();
 
-                        inc.setText("abc");
-                        Toast.makeText(getActivity(), ""+listcheckst.size(), Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("abc",error.toString());
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+                String mid = sp.getString("IdKey","No ID");
+                params.put("myid",mid);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    public void loadcounttime(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                "http://203.154.83.137/StudentAttendent/counttimetable.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("ResponseStudent",response.toString());
+                try {
+                    JSONArray array = new JSONArray(response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject posts = array.getJSONObject(i);
+                        counttime = posts.getString("countsubject");
+
+                        int tcount = Integer.parseInt(counttime);
+                        int countcheck = listcheckst.size();
+                        int percent = (countcheck*100)/tcount;
+                        String lo = String.valueOf(percent);
+                        inc.setText("เข้าเรียน "+lo+"%");
 
                     }
                 } catch (JSONException e) {

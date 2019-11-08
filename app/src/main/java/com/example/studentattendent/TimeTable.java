@@ -59,13 +59,15 @@ public class TimeTable extends Fragment {
     String myuser,myname;
     public timetableAdapter TimetableAdapter;
 
+    public int countsub;
+
     List<String> listspinner  = new ArrayList<>();
     ArrayAdapter<String> spinnerAdapter;
 
     View v;
 
     private RecyclerView recyclerView;
-    private List<stimetable> listtimetable;
+    public List<stimetable> listtimetable;
     private String Url_Loadtimeble = "http://203.154.83.137/StudentAttendent/loadtimetable.php";
 
 
@@ -165,6 +167,8 @@ public class TimeTable extends Fragment {
                         );
                         TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
                         recyclerView.setAdapter(TimetableAdapter);
+
+                        countsub = listtimetable.size();
 
                     }
                 } catch (JSONException e) {
