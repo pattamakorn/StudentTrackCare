@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new TimeTable()).commit();
                     return true;
                 case R.id.checknames:
-                    getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new checkname()).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new checkname_student()).commit();
                     return true;
                 case R.id.transcript:
                     getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new transcript()).commit();
