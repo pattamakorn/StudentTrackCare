@@ -22,6 +22,7 @@
             android:src="@drawable/check" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/stidname"
             android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
             android:text="ชื่อ - สกุล" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/timecheck"
             android:layout_width="wrap_content"

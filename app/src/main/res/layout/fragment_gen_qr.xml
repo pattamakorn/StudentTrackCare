@@ -36,6 +36,7 @@
                 android:src="@drawable/genqrcode" />
 
             <TextView
+                android:fontFamily="@font/mitr_semibold"
                 android:id="@+id/saveQR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:fontFamily="@font/mitr_semibold"
                 android:textColor="#000"
                 android:id="@+id/namesub"
                 android:layout_width="332dp"
@@ -74,6 +76,7 @@
                 android:text="วิชา คณิตศาสตร์" />
 
             <TextView
+                android:fontFamily="@font/mitr_semibold"
                 android:textColor="#000"
                 android:id="@+id/showkey"
                 android:layout_width="332dp"
@@ -92,6 +95,7 @@
                 android:text="Keyword Checkname" />
 
             <Button
+                android:fontFamily="@font/mitr_semibold"
                 android:id="@+id/genqr"
                 style="@style/btn_genqr"
                 android:layout_width="wrap_content"

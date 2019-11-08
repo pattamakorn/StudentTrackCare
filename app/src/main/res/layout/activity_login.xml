@@ -17,6 +17,7 @@
 
 
     <EditText
+        android:fontFamily="@font/mitr_semibold"
         android:id="@+id/userlogin"
         android:layout_width="342dp"
         android:layout_height="49dp"
@@ -39,6 +40,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+        android:fontFamily="@font/mitr_semibold"
         android:id="@+id/passwordlogin"
         android:layout_width="342dp"
         android:layout_height="49dp"
@@ -62,6 +64,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:fontFamily="@font/mitr_semibold"
         android:id="@+id/login_btn"
         style="@style/btn_blue"
         android:layout_width="130dp"

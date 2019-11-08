@@ -15,6 +15,7 @@
         android:layout_height="70dp">
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:id="@+id/id_subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,6 +50,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/timetablesubject"
             android:layout_width="wrap_content"

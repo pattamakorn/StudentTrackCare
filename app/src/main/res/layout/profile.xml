@@ -20,11 +20,17 @@
                 android:layout_marginTop="25dp"
                 android:clickable="true"
                 android:src="@drawable/ic_launcher_background" />
+            <ScrollView
+                android:layout_below="@+id/detailProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <RelativeLayout
                     android:layout_below="@+id/detailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
                         android:layout_marginTop="15dp"
@@ -33,6 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
                         android:layout_marginTop="15dp"
@@ -42,6 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
                         android:layout_marginTop="15dp"
@@ -52,6 +60,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
                         android:layout_marginTop="15dp"
@@ -61,6 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
                         android:layout_marginTop="15dp"
@@ -71,6 +81,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:fontFamily="@font/mitr_semibold"
                         android:layout_marginBottom="20dp"
                         android:textColor="#000"
                         android:paddingLeft="15dp"
@@ -81,6 +92,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
+
+            </ScrollView>
+
         </RelativeLayout>
 
 </RelativeLayout>

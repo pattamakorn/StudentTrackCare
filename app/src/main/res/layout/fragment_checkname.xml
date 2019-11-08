@@ -24,6 +24,7 @@
                 android:background="@drawable/bgpro">
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/mysub"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -48,6 +49,7 @@
                 android:layout_height="75dp"
                 android:background="#BB7C2A">
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:gravity="center"
                     android:id="@+id/showqrnowday"
                     android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                 android:background="@drawable/bgpro">
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/classroom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,6 +90,7 @@
 
 
                 <Spinner
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/selectclass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

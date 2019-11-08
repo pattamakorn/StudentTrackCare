@@ -17,19 +17,21 @@
         android:orientation="vertical">
 
         <TextView
-            android:textColor="#000"
             android:id="@+id/id_subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"
             android:layout_marginLeft="88dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/mitr_semibold"
             android:text="อ3001"
+            android:textColor="#000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/name_subject"
             android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/teacher_subject"
             android:layout_width="wrap_content"
@@ -55,6 +58,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -71,6 +75,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            android:fontFamily="@font/mitr_semibold"
             android:textColor="#000"
             android:id="@+id/timetablesubject"
             android:layout_width="wrap_content"

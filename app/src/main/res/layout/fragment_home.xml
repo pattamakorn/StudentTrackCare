@@ -47,6 +47,7 @@
                     android:src="@drawable/ic_launcher_background" />
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:layout_centerHorizontal="true"

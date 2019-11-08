@@ -26,6 +26,7 @@
                 android:background="@drawable/bgpro">
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/daytt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,16 +47,16 @@
                     android:layout_below="@+id/daytt"
                     android:layout_alignStart="@+id/daytt"
                     android:layout_alignLeft="@+id/daytt"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/mitr_semibold"
                     android:text="4/11/2562"
                     android:textColor="#fff"
                     android:textSize="15sp" />
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,23 +106,24 @@
                 <TextView
                     android:id="@+id/textterm"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/mitr_semibold"
+                    android:text="ภาคเรียนที่"
                     android:textColor="#fff"
-                    android:textSize="15sp"
-                    android:text="ภาคเรียนที่" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/selectterm"
                     android:layout_width="31dp"
-                    android:layout_height="18dp"
+                    android:layout_height="22dp"
                     android:layout_alignBottom="@+id/textterm"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
@@ -129,9 +131,11 @@
                     android:layout_toEndOf="@+id/textterm"
                     android:layout_toRightOf="@+id/textterm"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/mitr_semibold"
                     android:spinnerMode="dropdown" />
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/textyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -146,6 +150,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/showyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
