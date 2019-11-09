@@ -1,12 +1,18 @@
 package com.example.studentattendent;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -16,6 +22,7 @@ public class studentcheckAdapter extends RecyclerView.Adapter<studentcheckAdapte
     Context mcontext;
     List<studentcheck> mfollow;
     View view;
+    Dialog myDialogrec;
 
     public studentcheckAdapter(Context mcontext, List<studentcheck> mfollow) {
         this.mcontext = mcontext;
@@ -26,7 +33,27 @@ public class studentcheckAdapter extends RecyclerView.Adapter<studentcheckAdapte
     @Override
     public studentcheckAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         view = LayoutInflater.from(mcontext).inflate(R.layout.item_student_follow,parent,false);
-        MyViewHolder vHolder = new MyViewHolder(view);
+        final MyViewHolder vHolder = new MyViewHolder(view);
+
+        myDialogrec = new Dialog(mcontext);
+        myDialogrec.setContentView(R.layout.profile);
+
+        vHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String test = mfollow.get(vHolder.getAdapterPosition()).getFollownamesub();
+
+                TextView ko = myDialogrec.findViewById(R.id.dname);
+
+                ko.setText(test);
+
+                myDialogrec.show();
+
+
+
+            }
+        });
+
         return vHolder;
     }
 
@@ -46,13 +73,17 @@ public class studentcheckAdapter extends RecyclerView.Adapter<studentcheckAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView follwsub,follwteach,follwclass;
+        public CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             follwsub = itemView.findViewById(R.id.follow_subname);
             follwteach = itemView.findViewById(R.id.follow_subteach);
             follwclass = itemView.findViewById(R.id.follow_classroom);
+            cardView = itemView.findViewById(R.id.cardfollow);
 
         }
     }
+
+
 }
