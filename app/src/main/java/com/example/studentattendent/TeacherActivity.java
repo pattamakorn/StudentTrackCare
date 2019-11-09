@@ -31,7 +31,7 @@ public class TeacherActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new checkname()).commit();
                     return true;
                 case R.id.transcript:
-                    getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new transcript()).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new transcript_teacher()).commit();
                     return true;
                 case R.id.gps:
                     getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,new maps()).commit();
