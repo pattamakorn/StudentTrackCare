@@ -80,7 +80,7 @@ public class checkname_student extends Fragment {
         sdate.setText(ct);
         SimpleDateFormat simpleDayFormat = new SimpleDateFormat("EEEE");
         date = simpleDayFormat.format(new Date());
-        Toast.makeText(getActivity(),date, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),date, Toast.LENGTH_SHORT).show();
 
 
         return view;

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
 public class transcript extends Fragment {
     View v;
 
+    private TextView grade,credit;
     private RecyclerView recyclerView;
     private List<gradestudent> listgrade;
 
@@ -38,6 +40,12 @@ public class transcript extends Fragment {
         v = inflater.inflate(R.layout.fragment_transcript, container, false);
 
         recyclerView = v.findViewById(R.id.recyclertranscript);
+        grade = v.findViewById(R.id.sumgrade);
+        credit = v.findViewById(R.id.sumcredit);
+
+        grade.setText("3.59");
+        credit.setText("150");
+
         gradestudentAdapter GradestudentAdapter = new gradestudentAdapter(getContext(),listgrade);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(GradestudentAdapter);

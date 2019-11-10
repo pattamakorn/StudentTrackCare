@@ -65,23 +65,24 @@
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
+            android:background="#B4B4B4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="195dp"
             android:layout_marginBottom="80dp"
             >
 
             <androidx.recyclerview.widget.RecyclerView
-
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
-
 
     </androidx.cardview.widget.CardView>
 </FrameLayout>

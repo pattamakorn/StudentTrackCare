@@ -51,8 +51,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="103dp"
-            android:layout_marginRight="103dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/mitr_semibold"
             android:text="TextView"
@@ -68,8 +68,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="11dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/detaill" />
     </RelativeLayout>

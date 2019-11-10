@@ -47,7 +47,7 @@ public class gradestudentAdapter extends RecyclerView.Adapter<gradestudentAdapte
         vHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mcontexttran, "KKKKK", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mcontexttran, "KKKKK", Toast.LENGTH_SHORT).show();
 
             }
         });
