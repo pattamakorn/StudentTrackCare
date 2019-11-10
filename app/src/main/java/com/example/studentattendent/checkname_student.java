@@ -53,7 +53,7 @@ public class checkname_student extends Fragment {
     public studentcheckAdapter StudentcheckAdapter;
     private RecyclerView recyclerViewcs;
     private List<studentcheck> listcheckst;
-    public String numsub,numcheck,counttime;
+    public String numsub,numcheck,counttime,date;
     public int percen,aa,bb;
 
 
@@ -78,7 +78,9 @@ public class checkname_student extends Fragment {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String ct = simpleDateFormat.format(new Date());
         sdate.setText(ct);
-
+        SimpleDateFormat simpleDayFormat = new SimpleDateFormat("EEEE");
+        date = simpleDayFormat.format(new Date());
+        Toast.makeText(getActivity(),date, Toast.LENGTH_SHORT).show();
 
 
         return view;
@@ -88,12 +90,12 @@ public class checkname_student extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listcheckst = new ArrayList<>();
-        loadcheck();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loadcheck();
     }
 
     public void loadcheck(){
@@ -138,6 +140,7 @@ public class checkname_student extends Fragment {
                 SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
                 String mid = sp.getString("IdKey","No ID");
                 params.put("myid",mid);
+                params.put("day",date);
                 return params;
             }
         };

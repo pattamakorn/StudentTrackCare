@@ -1,7 +1,9 @@
 package com.example.studentattendent;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -53,16 +55,13 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class TimeTable extends Fragment {
-    private TextView daynow,datenow;
+    private TextView daynow,datenow,numterm,term;
     private Spinner spinner;
-    String myear,mday,dday,year="2562",terms;
+    String myear,mday,dday,year="2562";
     String myuser,myname;
     public timetableAdapter TimetableAdapter;
 
     public int countsub;
-
-    List<String> listspinner  = new ArrayList<>();
-    ArrayAdapter<String> spinnerAdapter;
 
     View v;
 
@@ -82,9 +81,10 @@ public class TimeTable extends Fragment {
         v = inflater.inflate(R.layout.fragment_time_table, container, false);
 
         recyclerView = v.findViewById(R.id.recyclertime);
-        spinner = v.findViewById(R.id.spinner);
         daynow = v.findViewById(R.id.daynow);
         datenow = v.findViewById(R.id.datenow);
+        numterm = v.findViewById(R.id.numterm);
+        term = v.findViewById(R.id.term);
         TimetableAdapter = new timetableAdapter(getContext(),listtimetable);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(TimetableAdapter);
@@ -93,32 +93,38 @@ public class TimeTable extends Fragment {
         SimpleDateFormat simpleDayFormat = new SimpleDateFormat("EEEE");
         String ct = simpleDateFormat.format(new Date());
         String dayn = simpleDayFormat.format(new Date());
+
         dday = dayn;
-
-        spinnerAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, android.R.id.text1);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
-        listspinner.add("1");
-        listspinner.add("2");
-        spinnerAdapter.addAll(listspinner);
-        spinnerAdapter.notifyDataSetChanged();
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        numterm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                terms = listspinner.get(i);
-                listtimetable.clear();
-                TimetableAdapter.notifyDataSetChanged();
-                loadtime();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onClick(View view) {
+                changeterm();
             }
         });
+
+        term.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeterm();
+            }
+        });
+
+
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                terms = listspinner.get(i);
+//                listtimetable.clear();
+//                TimetableAdapter.notifyDataSetChanged();
+//                loadtime();
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         datenow.setText(ct);
         daynow.setText(dday);
@@ -136,6 +142,7 @@ public class TimeTable extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loadtime();
     }
 
     public void loadtime(){
@@ -190,7 +197,7 @@ public class TimeTable extends Fragment {
                 Map<String,String> params = new HashMap<>();
                 SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
                 String mid = sp.getString("IdKey","No ID");
-                params.put("term",terms);
+                params.put("term",numterm.getText().toString());
                 params.put("day",dday);
                 params.put("year",year);
                 params.put("id",mid);
@@ -200,6 +207,33 @@ public class TimeTable extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+    private void changeterm(){
+        final String[] listItems = {"ภาคเรียนที่ 1","ภาคเรียนที่ 2"};
+        AlertDialog.Builder mbuilder = new AlertDialog.Builder(getContext());
+        mbuilder.setTitle("เลือกภาคเรียน");
+        mbuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0){
+                    numterm.setText("1");
+                    listtimetable.clear();
+                    TimetableAdapter.notifyDataSetChanged();
+                    loadtime();
+                }
+                else if(i == 1){
+                    numterm.setText("2");
+                    listtimetable.clear();
+                    TimetableAdapter.notifyDataSetChanged();
+                    loadtime();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog dialog = mbuilder.create();
+        dialog.show();
     }
 
 

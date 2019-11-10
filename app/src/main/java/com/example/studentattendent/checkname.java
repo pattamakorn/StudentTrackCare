@@ -1,7 +1,9 @@
 package com.example.studentattendent;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -45,11 +47,8 @@ import java.util.Map;
 public class checkname extends Fragment {
     View view;
 
-    private TextView showkeywordtoday,showmysub;
-    private Spinner spinnersc;
+    private TextView showkeywordtoday,showmysub,classroom,selectclass;
 
-    List<String> listspinnersc  = new ArrayList<>();
-    ArrayAdapter<String> spinnerAdaptersc;
 
     public checkedAdapter CheckedAdapter;
     private RecyclerView recyclerView;
@@ -71,41 +70,27 @@ public class checkname extends Fragment {
 
         showkeywordtoday = view.findViewById(R.id.showqrnowday);
         showmysub = view.findViewById(R.id.mysub);
-        spinnersc = view.findViewById(R.id.selectclass);
         recyclerView = view.findViewById(R.id.recyclertcheckscan);
+        classroom = view.findViewById(R.id.classroom);
+        selectclass = view.findViewById(R.id.selectclass);
 
         CheckedAdapter = new checkedAdapter(getContext(),listcheck);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(CheckedAdapter);
+        changeclass();
+        selectclass.setText("4/1");
 
-        spinnerAdaptersc = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, android.R.id.text1);
-        spinnerAdaptersc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnersc.setAdapter(spinnerAdaptersc);
-        listspinnersc.add("4/1");
-        listspinnersc.add("4/2");
-        listspinnersc.add("5/1");
-        listspinnersc.add("5/2");
-        listspinnersc.add("6/1");
-        listspinnersc.add("6/2");
-        spinnerAdaptersc.addAll(listspinnersc);
-        spinnerAdaptersc.notifyDataSetChanged();
-        loadcheck();
-        spinnersc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        classroom.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ccl = listspinnersc.get(i);
-                listcheck.clear();
-                CheckedAdapter.notifyDataSetChanged();
-                loadmykey();
-                loadcheck();
-
+            public void onClick(View view) {
+                changeclass();
             }
+        });
 
+        selectclass.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                loadmykey();
-                loadcheck();
+            public void onClick(View view) {
+                changeclass();
             }
         });
 
@@ -116,13 +101,13 @@ public class checkname extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listcheck = new ArrayList<>();
-        loadmykey();
-        loadcheck();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loadmykey();
+        loadcheck();
     }
 
     public void loadmykey(){
@@ -218,7 +203,7 @@ public class checkname extends Fragment {
                 SharedPreferences sp = getActivity().getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
                 String mid = sp.getString("IdKey","No ID");
                 params.put("myid",mid);
-                params.put("class",ccl);
+                params.put("class",selectclass.getText().toString());
                 params.put("inkey",keycheck);
                 return params;
             }
@@ -226,6 +211,57 @@ public class checkname extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+    private void changeclass(){
+        final String[] listItems = {"มัธยมศึกษาปีที่ 4/1","มัธยมศึกษาปีที่ 4/2","มัธยมศึกษาปีที่ 5/1","มัธยมศึกษาปีที่ 5/2","มัธยมศึกษาปีที่ 6/1","มัธยมศึกษาปีที่ 6/2"};
+        AlertDialog.Builder mbuilder = new AlertDialog.Builder(getContext());
+        mbuilder.setTitle("เลือกชั้นเรียน");
+        mbuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0){
+                    selectclass.setText("4/1");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                else if(i == 1){
+                    selectclass.setText("4/2");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                else if(i == 2){
+                    selectclass.setText("5/1");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                else if(i == 3){
+                    selectclass.setText("5/2");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                else if(i == 4){
+                    selectclass.setText("6/1");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                else if(i == 5){
+                    selectclass.setText("6/2");
+                    listcheck.clear();
+                    CheckedAdapter.notifyDataSetChanged();
+                    loadcheck();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog dialog = mbuilder.create();
+        dialog.show();
     }
 
 }
