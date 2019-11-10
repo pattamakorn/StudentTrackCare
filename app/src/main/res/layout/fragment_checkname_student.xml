@@ -29,40 +29,42 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="391dp"
-            android:layout_height="450dp"
+            android:layout_height="match_parent"
             android:layout_below="@+id/toppage"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="80dp"
             android:elevation="10dp"
             app:cardCornerRadius="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_margin="10dp"
                     android:id="@+id/layout_top"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:layout_margin="10dp"
                             android:id="@+id/follow_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/mitr_semibold"
                             android:text="99/99/9999"
-                            android:textSize="15dp"
-                            android:fontFamily="@font/mitr_semibold"/>
+                            android:textSize="15dp" />
+
                         <TextView
                             android:id="@+id/follow_inclass"
                             android:layout_width="wrap_content"
@@ -83,12 +85,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_below="@+id/layout_top"
                     android:id="@+id/recyclerstdfollow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/layout_top"
                     android:layout_margin="10dp"
-                    android:layout_marginBottom="150dp">
+                    android:layout_marginBottom="80dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>

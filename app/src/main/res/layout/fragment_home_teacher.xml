@@ -25,7 +25,7 @@
                 android:id="@+id/profile"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:layout_height="498px"
+                android:layout_height="match_parent"
                 android:background="@drawable/bgpro">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -69,10 +69,12 @@
                     android:id="@+id/impost"
                     android:layout_width="20dp"
                     android:layout_height="16dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="119dp"
-                    android:layout_marginRight="119dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="267dp"
+                    android:layout_marginLeft="267dp"
+                    android:layout_marginTop="12dp"
                     android:src="@drawable/postt" />
 
                 <TextView
@@ -80,13 +82,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="22dp"
                     android:layout_alignTop="@+id/impost"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="258dp"
-                    android:layout_marginLeft="258dp"
-                    android:layout_marginTop="-5dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginRight="40dp"
+                    android:layout_marginStart="-1dp"
+                    android:layout_marginLeft="-1dp"
+                    android:layout_marginTop="-6dp"
+                    android:layout_toEndOf="@+id/impost"
+                    android:layout_toRightOf="@+id/impost"
                     android:fontFamily="@font/mitr_semibold"
                     android:text="โพสต์ข่าวสาร"
                     android:textColor="#fff" />
@@ -96,15 +96,15 @@
         </androidx.cardview.widget.CardView>
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="502dp"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="199dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="175dp"
             >
 
             <androidx.recyclerview.widget.RecyclerView
-
-                android:layout_marginBottom="162dp"
+                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:id="@+id/recyclerrrr"
                 android:layout_height="match_parent">

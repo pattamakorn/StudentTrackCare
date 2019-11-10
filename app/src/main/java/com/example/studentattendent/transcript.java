@@ -51,7 +51,11 @@ public class transcript extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listgrade = new ArrayList<>();
-        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 1/2562","ชั้นมัธยมศึกษาปีที่ 6/1"));
+        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 1/2560","ชั้นมัธยมศึกษาปีที่ 4/1"));
+        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 2/2560","ชั้นมัธยมศึกษาปีที่ 4/1"));
+        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 1/2561","ชั้นมัธยมศึกษาปีที่ 5/1"));
+        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 2/2561","ชั้นมัธยมศึกษาปีที่ 5/1"));
+        listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 2/2562","ชั้นมัธยมศึกษาปีที่ 6/1"));
         listgrade.add(new gradestudent("4.00","ภาคเรียนที่ 2/2562","ชั้นมัธยมศึกษาปีที่ 6/1"));
 
     }

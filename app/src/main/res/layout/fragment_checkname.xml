@@ -7,8 +7,9 @@
     android:background="#fff"
     tools:context=".checkname">
     <RelativeLayout
+        android:layout_marginBottom="80dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/aa"
@@ -71,7 +72,7 @@
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="502dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/bgpro">
                 <RelativeLayout
                     android:background="#fff"
@@ -116,8 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/llll"
-                    android:layout_marginTop="-1dp"
-                    android:layout_marginBottom="100dp"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginTop="-1dp"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
