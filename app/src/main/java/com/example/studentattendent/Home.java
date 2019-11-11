@@ -140,7 +140,8 @@ public class Home extends Fragment implements detailstudent.detailListener{
         requestQueue.add(stringRequest);
     }
 
-    public void loadnews(){StringRequest stringRequest = new StringRequest(
+    public void loadnews(){
+        StringRequest stringRequest = new StringRequest(
             Url_Loadnews, new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
