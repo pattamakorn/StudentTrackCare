@@ -44,6 +44,65 @@
             android:layout_width="match_parent"
             android:layout_height="90dp">
 
+            <TextView
+                android:id="@+id/term2"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:fontFamily="@font/mitr_semibold"
+                android:text="ภาคเรียนที่ 1"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/year2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/term2"
+                android:layout_alignBottom="@+id/term2"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@+id/term2"
+                android:layout_toRightOf="@+id/term2"
+                android:fontFamily="@font/mitr_semibold"
+                android:text="ปีการศึกษา 2562"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/checknameparent_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/term2"
+                android:layout_alignStart="@+id/term2"
+                android:layout_alignLeft="@+id/term2"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/mitr_semibold"
+                android:text="99/99/9999"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/percent_checknameparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/checknameparent_date"
+                android:layout_alignBottom="@+id/checknameparent_date"
+                android:layout_marginStart="23dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="-1dp"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@+id/checknameparent_date"
+                android:layout_toRightOf="@+id/checknameparent_date"
+                android:fontFamily="@font/mitr_semibold"
+                android:text="เข้าเรียน 100%"
+                android:textColor="#fff" />
+
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
