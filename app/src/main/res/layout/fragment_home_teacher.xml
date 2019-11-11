@@ -100,11 +100,10 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="80dp"
-            android:layout_marginTop="175dp"
+            android:layout_marginTop="180dp"
             >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:id="@+id/recyclerrrr"
                 android:layout_height="match_parent">
