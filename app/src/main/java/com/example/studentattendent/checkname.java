@@ -69,7 +69,7 @@ public class checkname extends Fragment {
         view = inflater.inflate(R.layout.fragment_checkname, container, false);
 
         showkeywordtoday = view.findViewById(R.id.showqrnowday);
-        showmysub = view.findViewById(R.id.mysub);
+        //showmysub = view.findViewById(R.id.mysub);
         recyclerView = view.findViewById(R.id.recyclertcheckscan);
         classroom = view.findViewById(R.id.classroom);
         selectclass = view.findViewById(R.id.selectclass);
@@ -127,8 +127,9 @@ public class checkname extends Fragment {
                         String lname = posts.getString("lnameT");
                         String gen = posts.getString("gen");
                         keycheck = mykey;
-                        showkeywordtoday.setText("Keyword "+mykey+"\n"+gen);
-                        showmysub.setText(subid+" "+subname+"\n"+fname+" "+lname);
+                        showkeywordtoday.setText("Keyword : "+mykey);
+//                        showkeywordtoday.setText("Keyword "+mykey+"\n"+gen);
+//                        showmysub.setText(subid+" "+subname);
 
                     }
                 } catch (JSONException e) {

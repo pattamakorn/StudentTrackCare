@@ -3,13 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#18FFFF"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#d08106"
     tools:context=".checknamesparent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layfirstcheckparent"
+            android:background="@drawable/toppagecheckparent"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="ยินดีต้อนรับ"
+                android:fontFamily="@font/mitr_semibold"/>
+            <TextView
+                android:id="@+id/fullnamestdofparent"
+                android:layout_below="@+id/welcome"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="ชื่อนักเรียนที่เลือก"
+                android:fontFamily="@font/mitr_semibold"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/layfirstcheckparent"
+            android:id="@+id/laysecondcheckparent"
+            android:background="@drawable/tabsecondcheckparent"
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#f7931e"
+            android:layout_below="@+id/laysecondcheckparent"
+            android:layout_marginBottom="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:id="@+id/recyclerchecknameparent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
 </FrameLayout>

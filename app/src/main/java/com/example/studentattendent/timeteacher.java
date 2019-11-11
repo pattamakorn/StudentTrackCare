@@ -1,7 +1,9 @@
 package com.example.studentattendent;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -45,9 +47,8 @@ import java.util.Map;
  */
 public class timeteacher extends Fragment {
     private  String URL_TIMETeach = "http://203.154.83.137/StudentAttendent/loadteachtime.php";
-    private TextView nowday,nowdate,showy;
+    private TextView nowday,nowdate,showy,termtimeteach;
     public String today,toyear,toterm;
-    private Spinner spinnert;
     public teachAdapter TeachAdapter;
     View view;
 
@@ -70,37 +71,22 @@ public class timeteacher extends Fragment {
         view = inflater.inflate(R.layout.fragment_timeteacher, container, false);
         nowdate = view.findViewById(R.id.datett);
         nowday = view.findViewById(R.id.daytt);
-        spinnert = view.findViewById(R.id.selectterm);
-        showy = view.findViewById(R.id.showyear);
+        showy = view.findViewById(R.id.textyear);
+        termtimeteach = view.findViewById(R.id.textterm);
+
         recyclerView = view.findViewById(R.id.recyclerteachertime);
         TeachAdapter = new teachAdapter(getContext(),listteachtimetable);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(TeachAdapter);
 
-        spinnerAdapters = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, android.R.id.text1);
-        spinnerAdapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnert.setAdapter(spinnerAdapters);
-        listspinners.add("1");
-        listspinners.add("2");
-        spinnerAdapters.addAll(listspinners);
-        spinnerAdapters.notifyDataSetChanged();
 
-        spinnert.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        termtimeteach.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                toterm = listspinners.get(i);
-                listteachtimetable.clear();
-                TeachAdapter.notifyDataSetChanged();
-                loadtime();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onClick(View view) {
+                changeterm();
             }
         });
+
 
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -108,13 +94,13 @@ public class timeteacher extends Fragment {
         String ct = simpleDateFormat.format(new Date());
         String dayn = simpleDayFormat.format(new Date());
         today = dayn;
-        //toterm = "1";
-        toyear = showy.getText().toString();
+        toterm = "1";
+        toyear = "2562";
 
         nowday.setText("Hello, "+dayn);
         nowdate.setText(ct);
 
-        //loadtime();
+        loadtime();
 
         return view;
     }
@@ -123,8 +109,6 @@ public class timeteacher extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listteachtimetable = new ArrayList<>();
-
-        //loadtime();
     }
 
     public void loadtime(){
@@ -180,6 +164,35 @@ public class timeteacher extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+    private void changeterm(){
+        final String[] listItems = {"ภาคเรียนที่ 1","ภาคเรียนที่ 2"};
+        AlertDialog.Builder mbuilder = new AlertDialog.Builder(getContext());
+        mbuilder.setTitle("เลือกภาคเรียน");
+        mbuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0){
+                    termtimeteach.setText("ภาคเรียนที่ 1");
+                    toterm = "1";
+                    listteachtimetable.clear();
+                    TeachAdapter.notifyDataSetChanged();
+                    loadtime();
+                }
+                else if(i == 1){
+                    termtimeteach.setText("ภาคเรียนที่ 2");
+                    toterm = "2";
+                    listteachtimetable.clear();
+                    TeachAdapter.notifyDataSetChanged();
+                    loadtime();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog dialog = mbuilder.create();
+        dialog.show();
     }
 
 }

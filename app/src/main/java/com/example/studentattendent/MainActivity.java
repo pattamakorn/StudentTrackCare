@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
         String showidpre = sp.getString("IdKey","No ID");
         String showfullpre = sp.getString("fullnameKey","No ID");
+
+
     }
 
     @Override

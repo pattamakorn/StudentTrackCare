@@ -22,23 +22,23 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:background="@drawable/bgpro">
+                android:layout_height="120dp"
+                android:background="@drawable/toppagetimeteach">
 
                 <TextView
-                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/daytt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="88dp"
-                    android:layout_marginLeft="88dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toEndOf="@+id/textView"
-                    android:layout_toRightOf="@+id/textView"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignStart="@+id/textView"
+                    android:layout_alignLeft="@+id/textView"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/mitr_semibold"
                     android:text="สวัสดีวันจันทร์"
-                    android:textColor="#fff"
-                    android:textSize="15sp" />
+                    android:textColor="#000"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/datett"
@@ -49,28 +49,26 @@
                     android:layout_alignLeft="@+id/daytt"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/mitr_semibold"
                     android:text="4/11/2562"
-                    android:textColor="#fff"
-                    android:textSize="15sp" />
+                    android:textColor="#000"
+                    android:textSize="13sp" />
 
                 <TextView
-                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginStart="243dp"
+                    android:layout_marginLeft="243dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/mitr_semibold"
                     android:text="ตารางสอนประจำวัน"
-                    android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textColor="#000"
+                    android:textSize="13sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -86,22 +84,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:background="#BB7C2A">
+                android:background="@drawable/secondtaptimeteach">
 
-                <ImageView
-                    android:layout_width="159dp"
-                    android:layout_height="73dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginEnd="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toEndOf="@+id/showyear"
-                    android:layout_toRightOf="@+id/showyear"
-                    android:src="@drawable/teachertime" />
 
                 <TextView
                     android:id="@+id/textterm"
@@ -110,57 +94,28 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginStart="235dp"
+                    android:layout_marginLeft="235dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/mitr_semibold"
-                    android:text="ภาคเรียนที่"
+                    android:text="ภาคเรียนที่ 1"
                     android:textColor="#fff"
                     android:textSize="15sp" />
 
-                <Spinner
-                    android:id="@+id/selectterm"
-                    android:layout_width="31dp"
-                    android:layout_height="22dp"
-                    android:layout_alignBottom="@+id/textterm"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toEndOf="@+id/textterm"
-                    android:layout_toRightOf="@+id/textterm"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/mitr_semibold"
-                    android:spinnerMode="dropdown" />
-
                 <TextView
-                    android:fontFamily="@font/mitr_semibold"
                     android:id="@+id/textyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/textterm"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-2dp"
-                    android:layout_toEndOf="@+id/selectterm"
-                    android:layout_toRightOf="@+id/selectterm"
-                    android:text="ปีการศึกษา"
-                    android:textColor="#fff"
-                    android:textSize="15sp" />
-
-                <TextView
+                    android:layout_below="@+id/textterm"
+                    android:layout_alignStart="@+id/textterm"
+                    android:layout_alignLeft="@+id/textterm"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/textterm"
+                    android:layout_toRightOf="@+id/textterm"
                     android:fontFamily="@font/mitr_semibold"
-                    android:id="@+id/showyear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/textyear"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toEndOf="@+id/textyear"
-                    android:layout_toRightOf="@+id/textyear"
-                    android:text="2562"
+                    android:text="ปีการศึกษา 2562"
                     android:textColor="#fff"
                     android:textSize="15sp" />
             </RelativeLayout>
